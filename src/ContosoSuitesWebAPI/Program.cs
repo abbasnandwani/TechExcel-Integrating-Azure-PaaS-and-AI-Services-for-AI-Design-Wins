@@ -50,32 +50,32 @@ builder.Services.AddSingleton<CosmosClient>((_) =>
 builder.Services.AddSingleton<Kernel>((_) =>
 {
     IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
-    kernelBuilder.AddAzureOpenAIChatCompletion(
-        deploymentName: builder.Configuration["AzureOpenAI:DeploymentName"]!,
-        endpoint: builder.Configuration["AzureOpenAI:Endpoint"]!,
-        apiKey: builder.Configuration["AzureOpenAI:ApiKey"]!
-    );
     // kernelBuilder.AddAzureOpenAIChatCompletion(
     //     deploymentName: builder.Configuration["AzureOpenAI:DeploymentName"]!,
-    //     endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
-    //     apiKey: builder.Configuration["ApiManagement:ApiKey"]!
+    //     endpoint: builder.Configuration["AzureOpenAI:Endpoint"]!,
+    //     apiKey: builder.Configuration["AzureOpenAI:ApiKey"]!
     // );
+    kernelBuilder.AddAzureOpenAIChatCompletion(
+        deploymentName: builder.Configuration["AzureOpenAI:DeploymentName"]!,
+        endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
+        apiKey: builder.Configuration["ApiManagement:ApiKey"]!
+    );
 
 #pragma warning disable SKEXP0010 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-    kernelBuilder.AddAzureOpenAITextEmbeddingGeneration(
-    deploymentName: builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!,
-    endpoint: builder.Configuration["AzureOpenAI:Endpoint"]!,
-    apiKey: builder.Configuration["AzureOpenAI:ApiKey"]!
-);
-//  kernelBuilder.AddAzureOpenAITextEmbeddingGeneration(
+//     kernelBuilder.AddAzureOpenAITextEmbeddingGeneration(
 //     deploymentName: builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!,
-//     endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
-//     apiKey: builder.Configuration["ApiManagement:ApiKey"]!    
+//     endpoint: builder.Configuration["AzureOpenAI:Endpoint"]!,
+//     apiKey: builder.Configuration["AzureOpenAI:ApiKey"]!
 // );
+ kernelBuilder.AddAzureOpenAITextEmbeddingGeneration(
+    deploymentName: builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!,
+    endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
+    apiKey: builder.Configuration["ApiManagement:ApiKey"]!    
+);
 
-// Console.WriteLine("Abbas:" +  builder.Configuration["ApiManagement:Endpoint"]!);
-// Console.WriteLine("Abbas:" +  builder.Configuration["AzureOpenAI:DeploymentName"]!);
-// Console.WriteLine("Abbas:" +  builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!);
+//  Console.WriteLine("Abbas:" +  builder.Configuration["ApiManagement:Endpoint"]!);
+//  Console.WriteLine("Abbas:" +  builder.Configuration["AzureOpenAI:DeploymentName"]!);
+//  Console.WriteLine("Abbas:" +  builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!);
 #pragma warning restore SKEXP0010 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
 
